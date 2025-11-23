@@ -23,8 +23,8 @@ A React application that calculates and displays monthly reward points earned by
 
 ### 1️ Clone the project
 
-git clone <repository-url>
-cd reward-points-app
+git clone https://github.com/riya63095/Reward-Calculating-System
+cd reward-points
 
 ### 2️ Install dependencies
 
