@@ -2,69 +2,97 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Reward Points Calculation App
 
-In the project directory, you can run:
+A React application that calculates and displays monthly reward points earned by customers based on their transactions. The app includes filtering, expandable transaction tables, and a clean UI built with Material UI.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Important Notes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* To view reward points earned by each customer on monthly basis, please select a customer from the main table.
+* Expand rows in Monthly reward summary table to view individual transaction details(Transaction in each month)
+* Total reward points of each customer is shown in the main table only.
+* Filter by month / last 3 months / year
+* To apply filter on month/year, please uncheck the "Last 3 Months" checkbox.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 📦 Installation & Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1️ Clone the project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+git clone <repository-url>
+cd reward-points-app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2️ Install dependencies
 
-### `npm run eject`
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3️ Install Material UI and jest
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4 Install Pino Logger
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm install pino
 
-## Learn More
+### 5 To run test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm test
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 6 Start the development server
 
-### Code Splitting
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+App will run at: `http://localhost:3000`
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📁 Project Structure
 
-### Making a Progressive Web App
+```
+src/
+│── components/
+│   ├── CustomerTable.js
+│   ├── RewardTable.js
+│   ├── MonthlyTransactionTable.js
+│   ├── FilterBar.js
+│── test/
+│   ├── rewardPoints.test.js
+│── utils/
+│   ├── helper.js
+│── data/
+│   ├── transactions.json
+│── App.js
+│── index.js
+│── logger.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🧮 Reward Points Rule
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| Amount Spent | Points Earned                     |
+| ------------ | --------------------------------- |
+| > $100       | 2 points per dollar above 100     |
+| > $50        | 1 point per dollar between 50–100 |
+| < $50        | No points                         |
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Example
 
-### `npm run build` fails to minify
+For purchase amount **$120**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+(120 - 100) * 2 = 40 points
+(100 - 50) * 1 = 50 points
+total = 90 points
+```
+
+Working screenshots:
+![App Screenshot](./public/screenshots/totalpointTable.png)
+![App Screenshot](./public/screenshots/monthlyRewardSummary.png)
+
+
